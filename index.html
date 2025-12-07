@@ -1,239 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProCreate-Freelancing | Web Designer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProCreate-Freelancing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {margin:0;padding:0;font-family:'Roboto',sans-serif;background:#f5f5f5;color:#333;}
+  a {text-decoration:none;color:inherit;}
+  img {max-width:100%;border-radius:10px;}
+  h1,h2,h3,h4 {margin:0;}
+  p {margin:0.5em 0;}
+  section {padding:60px 20px;}
+  .container {max-width:1200px;margin:0 auto;}
+  .btn {background:#ff7f50;color:white;padding:0.8em 1.5em;border-radius:50px;font-weight:bold;transition:0.3s;display:inline-block;}
+  .btn:hover {background:#ff5722;}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  /* Hero */
+  header {background:#0077cc url('https://source.unsplash.com/1600x900/?freelance,web') center/cover no-repeat;color:white;text-align:center;padding:120px 20px 80px;position:relative;overflow:hidden;}
+  header::after {content:"";position:absolute;inset:0;background:rgba(0,0,0,0.4);}
+  header h1 {position:relative;font-size:3em;margin-bottom:20px;}
+  header p {position:relative;font-size:1.2em;margin-bottom:30px;}
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  /* About */
+  #about {background:#fff;text-align:center;}
+  #about h2 {margin-bottom:20px;color:#0077cc;}
+  #about p {max-width:700px;margin:0 auto 30px;}
 
-  <!-- Styles -->
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; transition:all 0.3s; }
-    body { background:#f5f5f5; color:#333; scroll-behavior:smooth; }
-    body.dark { background:#121212; color:#f5f5f5; }
-    body.dark header { color:white; }
-    body.dark nav { background: rgba(18,18,18,0.95); }
-    body.dark .project-info { background: rgba(0,0,0,0.85); }
-    body.dark footer { background:#111; }
+  /* Services */
+  #services {background:#f9f9f9;}
+  .services-container {display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+  .service {background:#fff;padding:30px;border-radius:15px;flex:1 1 250px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform 0.3s;}
+  .service:hover {transform:translateY(-5px);box-shadow:0 12px 35px rgba(0,0,0,0.2);}
+  .service h3 {color:#0077cc;margin-bottom:15px;}
 
-    /* Navigation */
-    nav { position:sticky; top:0; display:flex; justify-content:center; padding:1em 0; background: rgba(255,255,255,0.95); box-shadow:0 2px 8px rgba(0,0,0,0.1); z-index:1000; }
-    nav a { margin:0 1.5em; text-decoration:none; color:#333; font-weight:700; position:relative; }
-    nav a.active::after { content:""; position:absolute; left:0; bottom:-5px; width:100%; height:3px; background:#ff7f50; border-radius:2px; }
-    nav a:hover { color:#ff7f50; }
-    .toggle-dark { position:absolute; right:20px; top:15px; cursor:pointer; font-size:1.5em; }
+  /* Projects */
+  #projects {background:#fff;}
+  .projects-container {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .project-card {position:relative;overflow:hidden;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform 0.3s;}
+  .project-card:hover {transform:scale(1.03);box-shadow:0 12px 35px rgba(0,0,0,0.2);}
+  .project-card img {width:100%;display:block;transition:transform 0.5s;}
+  .project-card:hover img {transform:scale(1.1);}
+  .project-card h3 {position:absolute;bottom:20px;left:20px;color:white;text-shadow:0 2px 10px rgba(0,0,0,0.7);}
 
-    /* Hero */
-    header { background:url('https://source.unsplash.com/1600x900/?technology,web') center/cover no-repeat; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:white; position:relative; overflow:hidden; }
-    header::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
-    header h1 { font-size:3em; z-index:1; animation:fadeInDown 1s ease forwards; }
-    header p { font-size:1.5em; z-index:1; margin-bottom:1em; animation:fadeInUp 1s 0.5s ease forwards; }
-    header a.button { z-index:1; text-decoration:none; background:#ff7f50; color:white; padding:0.8em 1.5em; border-radius:50px; box-shadow:0 5px 15px rgba(0,0,0,0.3); transition:0.3s; }
-    header a.button:hover { background:#ff5722; transform:scale(1.05); }
+  /* Pricing */
+  #pricing {background:#f9f9f9;text-align:center;}
+  .pricing-cards {display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+  .pricing-card {background:#fff;padding:30px;border-radius:15px;flex:1 1 250px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform 0.3s;}
+  .pricing-card:hover {transform:translateY(-5px);box-shadow:0 12px 35px rgba(0,0,0,0.2);}
+  .pricing-card h3 {color:#0077cc;margin-bottom:15px;}
+  .pricing-card p {margin-bottom:15px;}
+  .pricing-card .btn {margin-top:10px;}
 
-    /* Sections */
-    section { padding:5em 2em; max-width:1200px; margin:auto; opacity:0; transform:translateY(50px); transition:all 1s ease-out; }
-    section.visible { opacity:1; transform:translateY(0); }
-    h2 { font-size:2.5em; text-align:center; margin-bottom:1em; color:#222; }
+  /* Contact */
+  #contact {background:#fff;text-align:center;}
+  #contact h2 {margin-bottom:20px;color:#0077cc;}
+  #contact p {margin-bottom:20px;}
 
-    /* About */
-    #about p { font-size:1.2em; line-height:1.8; text-align:center; max-width:800px; margin:auto; }
+  /* Footer */
+  footer {text-align:center;padding:20px;background:#222;color:white;}
 
-    /* Services */
-    .services { display:flex; flex-wrap:wrap; gap:2em; justify-content:center; }
-    .service { border:1px solid #ccc; padding:1.5em; border-radius:10px; width:250px; text-align:center; transition:transform 0.3s, box-shadow 0.3s; background:white; }
-    .service:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
-
-    /* Projects */
-    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2em; }
-    .project { position:relative; overflow:hidden; border-radius:15px; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.1); transition:transform 0.5s; }
-    .project img { width:100%; display:block; transition:transform 0.5s; }
-    .project:hover img { transform:scale(1.1); }
-    .project-info { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.7); color:white; padding:1em; transform:translateY(100%); transition:transform 0.4s; text-align:center; }
-    .project:hover .project-info { transform:translateY(0); }
-
-    /* Pricing */
-    .plans { display:flex; flex-wrap:wrap; gap:2em; justify-content:center; }
-    .plan { border:1px solid #ccc; padding:1.5em; border-radius:10px; width:250px; text-align:center; transition:transform 0.3s, box-shadow 0.3s; background:white; }
-    .plan:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.15); }
-
-    /* Contact */
-    #contact { text-align:center; }
-
-    #contact a { color:#ff7f50; text-decoration:none; font-weight:bold; }
-    #contact a:hover { color:#ff5722; }
-
-    /* Footer */
-    footer { background:#222; color:white; text-align:center; padding:2em 0; font-size:0.9em; }
-
-    /* Back to top button */
-    #topBtn { position:fixed; bottom:30px; right:30px; background:#ff7f50; color:white; border:none; padding:0.8em 1em; border-radius:50px; cursor:pointer; font-size:1.2em; display:none; z-index:100; }
-    #topBtn:hover { background:#ff5722; }
-
-    /* Animations */
-    @keyframes fadeInDown { 0% {opacity:0; transform:translateY(-50px);} 100% {opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { 0% {opacity:0; transform:translateY(50px);} 100% {opacity:1; transform:translateY(0);} }
-  </style>
+  /* Mobile responsiveness */
+  @media(max-width:768px){
+    header h1 {font-size:2.2em;}
+    header p {font-size:1em;}
+    .services-container, .pricing-cards {flex-direction:column;align-items:center;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
-    <i class="fas fa-moon toggle-dark" title="Toggle Dark Mode"></i>
-  </nav>
+<!-- Hero -->
+<header>
+  <h1>ProCreate-Freelancing</h1>
+  <p>Premium web design & development for your business</p>
+  <a href="#contact" class="btn">Get in Touch</a>
+</header>
 
-  <!-- Hero -->
-  <header>
-    <h1>ProCreate-Freelancing</h1>
-    <p>Freelance Web Designer & Developer</p>
-    <a href="#projects" class="button">See My Work</a>
-  </header>
-
-  <!-- About -->
-  <section id="about">
+<!-- About -->
+<section id="about">
+  <div class="container">
     <h2>About Me</h2>
-    <p>I’m a young freelance web designer passionate about creating premium websites that are modern, responsive, and user-friendly. I specialize in HTML, CSS, and JavaScript, delivering professional websites that impress clients.</p>
-  </section>
+    <p>I am a freelance web designer focused on creating responsive, modern, and high-end websites. My goal is to help businesses and individuals stand out online with professional designs and seamless functionality.</p>
+  </div>
+</section>
 
-  <!-- Services -->
-  <section id="services">
-    <h2>Services</h2>
-    <div class="services">
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <h2 style="text-align:center;color:#0077cc;margin-bottom:40px;">Services</h2>
+    <div class="services-container">
       <div class="service">
         <h3>Custom Website Design</h3>
-        <p>Modern, responsive, and professional websites tailored to your business.</p>
+        <p>Modern and responsive websites tailored to your brand.</p>
       </div>
       <div class="service">
-        <h3>Website Updates</h3>
-        <p>Keep your website content fresh and up-to-date whenever needed.</p>
+        <h3>Website Maintenance</h3>
+        <p>Monthly updates, backups, and performance monitoring.</p>
       </div>
       <div class="service">
-        <h3>Monthly Management & Maintenance</h3>
-        <p>Ongoing support, updates, backups, and technical maintenance every month.</p>
+        <h3>Landing Pages & Funnels</h3>
+        <p>High-converting pages to attract and retain clients.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <img src="https://source.unsplash.com/600x400/?website,design" alt="Project 1">
-        <div class="project-info">
-          <h3>Project 1</h3>
-          <p>Modern business website</p>
-        </div>
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <h2 style="text-align:center;color:#0077cc;margin-bottom:40px;">Projects</h2>
+    <div class="projects-container">
+      <a class="project-card" href="https://project1freelancing.netlify.app" target="_blank">
+        <img src="https://source.unsplash.com/600x400/?business,office" alt="Project 1">
+        <h3>Business Landing Page</h3>
+      </a>
+      <a class="project-card" href="https://project2freelancing.netlify.app/" target="_blank">
+        <img src="https://source.unsplash.com/600x400/?portfolio,design" alt="Project 2">
+        <h3>Portfolio Showcase</h3>
+      </a>
+      <a class="project-card" href="https://project3freelancing.netlify.app/" target="_blank">
+        <img src="https://source.unsplash.com/600x400/?blog,writing" alt="Project 3">
+        <h3>Blog Landing Page</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+  <div class="container">
+    <h2>Pricing</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Basic Package</h3>
+        <p>Simple 1-page site with responsive design</p>
+        <p>Email for payment details</p>
+        <a href="mailto:aopfniso@gmail.com" class="btn">Contact</a>
       </div>
-      <div class="project">
-        <img src="https://source.unsplash.com/600x400/?portfolio,web" alt="Project 2">
-        <div class="project-info">
-          <h3>Project 2</h3>
-          <p>Portfolio showcase</p>
-        </div>
+      <div class="pricing-card">
+        <h3>Standard Package</h3>
+        <p>Up to 5 pages with modern features</p>
+        <p>Email for payment details</p>
+        <a href="mailto:aopfniso@gmail.com" class="btn">Contact</a>
       </div>
-      <div class="project">
-        <img src="https://source.unsplash.com/600x400/?technology,app" alt="Project 3">
-        <div class="project-info">
-          <h3>Project 3</h3>
-          <p>Interactive web app</p>
-        </div>
+      <div class="pricing-card">
+        <h3>Premium Package</h3>
+        <p>Full custom website with maintenance & management</p>
+        <p>Email for payment details</p>
+        <a href="mailto:aopfniso@gmail.com" class="btn">Contact</a>
       </div>
     </div>
-  </section>
+    <p style="margin-top:20px;">*.com domains require extra payment — discussed via email.</p>
+  </div>
+</section>
 
-  <!-- Pricing -->
-  <section id="pricing">
-    <h2>Payment Plans</h2>
-    <p>Below are standard website packages. Final payment details will be discussed via email.</p>
-    <div class="plans">
-      <div class="plan">
-        <h3>Basic</h3>
-        <p>3-page website, responsive design</p>
-        <p><strong>$50</strong></p>
-      </div>
-      <div class="plan">
-        <h3>Standard</h3>
-        <p>5-page website, responsive + basic animations</p>
-        <p><strong>$100</strong></p>
-      </div>
-      <div class="plan">
-        <h3>Premium</h3>
-        <p>7-page website, responsive + animations + SEO basics</p>
-        <p><strong>$200</strong></p>
-      </div>
-    </div>
-    <p><em>Monthly management & maintenance services are available. Pricing discussed via email.</em></p>
-    <p><strong>Note:</strong> If you want a <strong>.com domain</strong>, an additional payment will be required. Details will be discussed via email.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
     <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:aopfniso@gmail.com">aopfniso@gmail.com</a></p>
-    <p>Click any package above to inquire. Payment and project details are finalized via email.</p>
-  </section>
+    <p>Email me at <a href="mailto:aopfniso@gmail.com">aopfniso@gmail.com</a> to discuss your project and pricing.</p>
+  </div>
+</section>
 
-  <!-- Back to top -->
-  <button id="topBtn" title="Back to top">↑</button>
+<!-- Footer -->
+<footer>
+  &copy; 2025 ProCreate-Freelancing
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 ProCreate-Freelancing. All rights reserved.
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    // Dark Mode Toggle
-    const toggle = document.querySelector('.toggle-dark');
-    toggle.addEventListener('click', () => document.body.classList.toggle('dark'));
-
-    // Scroll-triggered animations
-    const sections = document.querySelectorAll('section');
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.scrollY + window.innerHeight / 1.2;
-      sections.forEach(sec => {
-        if(scrollPos > sec.offsetTop) sec.classList.add('visible');
-      });
-
-      // Back to top button
-      const topBtn = document.getElementById('topBtn');
-      if(window.scrollY > 300) topBtn.style.display = 'block';
-      else topBtn.style.display = 'none';
-
-      // Active nav link
-      const navLinks = document.querySelectorAll('nav a[href^="#"]');
-      sections.forEach(sec => {
-        if(window.scrollY >= sec.offsetTop - 100 && window.scrollY < sec.offsetTop + sec.offsetHeight){
-          navLinks.forEach(link => link.classList.remove('active'));
-          const id = sec.getAttribute('id');
-          document.querySelector(`nav a[href="#${id}"]`).classList.add('active');
-        }
-      });
-    });
-
-    // Smooth scroll for nav
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({behavior:'smooth'});
-      });
-    });
-
-    // Back to top
-    document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-  </script>
+<!-- Mobile/Desktop Popup -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const userChoice = confirm("Are you using a mobile device? Press OK for Mobile, Cancel for Desktop.");
+  if (userChoice) {
+    alert("Welcome, mobile user! The site is optimized for your device.");
+  } else {
+    alert("Welcome, desktop user! Enjoy the full-screen experience.");
+  }
+});
+</script>
 
 </body>
 </html>
